@@ -26,7 +26,12 @@ public class Role {
 	public Role() {
 		super();
 	}
-	
+		
+	public Role(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Role(String nombre) {
 		super();
 		this.nombre = nombre;
@@ -64,7 +69,7 @@ public class Role {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcion, id, nombre);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -76,13 +81,12 @@ public class Role {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(id, other.id)
-				&& Objects.equals(nombre, other.nombre);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+		return "Role [nombre=" + nombre + "]";
 	}
 
 }

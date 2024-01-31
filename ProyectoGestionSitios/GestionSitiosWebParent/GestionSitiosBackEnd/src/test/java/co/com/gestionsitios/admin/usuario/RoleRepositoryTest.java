@@ -1,7 +1,8 @@
 package co.com.gestionsitios.admin.usuario;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,17 @@ public class RoleRepositoryTest {
 	}
 	@Test
 	public void testCreateRestRoles() {
-		Role role1 = new Role ("Role 1", "Descripcion (Role 1)");
+		Role roleSalesperson = new Role ("Salesperson", "Gestiona precio de productos, "
+				+ "clientes, despachos, pedidos y reporte de ventas");
+		
+		Role roleEditor = new Role ("Editor", "Gestiona categorias, marcas, "
+				+ "productos, artículos y menus");
+		
+		Role roleShipper = new Role ("Shipper", "Consulta productos, consulta pedidos, "
+				+ "y actualiza el estado de pedidos");
+		
+		Role roleAssistant = new Role ("Assistant", "Gestiona presuntas y opiniones");
+		
+		repo.saveAll(List.of(roleSalesperson, roleEditor, roleShipper, roleAssistant));
 	}
 }
