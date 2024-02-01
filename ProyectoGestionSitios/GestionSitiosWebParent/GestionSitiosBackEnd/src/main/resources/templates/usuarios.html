@@ -25,7 +25,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="topNavbar">
-					<ul class="nav nav-tabs" id="MenuPpal" role="tablist">
+					<ul class="nav nav-fill nav-tabs" id="MenuPpal" role="tablist">
 						<li class="nav-item" role="presentation">
 							<a class="nav-link" id="tab-usuarios" th:href = "@{/usuarios}" role="tab" >Usuarios</a>
 						</li>
@@ -52,11 +52,36 @@
 			</nav>
 		</div>
 		<div>
-			<h1>Gestión de Sitios - Panel de Control</h1>
+			<h2>Gestión de Usuarios</h2>
+		</div>
+		<div>
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+					<tr>
+						<td>Id Usuario</td>
+						<td>Fotos</td>
+						<td>Email</td>
+						<td>Nombres</td>
+						<td>Apellidos</td>
+						<td>Roles</td>
+						<td>¿Activo?</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuario : ${listaUsuarios}">
+						<td>[[${usuario.id}]]</td>
+						<td></td>
+						<td>[[${usuario.email}]]</td>
+						<td>[[${usuario.nombre}]]</td>
+						<td>[[${usuario.apellido}]]</td>
+						<td>[[${usuario.roles}]]</td>
+						<td>[[${usuario.enabled}]]</td>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
-	<div>
+	<div class="text-center">
 		<p>Gestión Sitios - Panel de Control - Copyright &copy; JCS</p>
 	</div>
 

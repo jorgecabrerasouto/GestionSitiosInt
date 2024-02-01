@@ -2,7 +2,6 @@ package co.com.gestionsitios.admin.usuario;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.apache.catalina.User;import org.hibernate.dialect.function.DateTruncEmulation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -12,7 +11,7 @@ import org.springframework.test.annotation.Rollback;
 
 import co.com.gestionsitios.common.entity.Role;
 import co.com.gestionsitios.common.entity.Usuario;
-import co.com.gestionsitios.usuario.UsuarioRepository;
+import co.com.gestionsitios.usuario.UsuariosRepository;
 import jakarta.persistence.EntityManager;
 
 @DataJpaTest
@@ -21,7 +20,7 @@ import jakarta.persistence.EntityManager;
 public class UsuarioRepositoryTest {
 
 	@Autowired
-	private UsuarioRepository repo;
+	private UsuariosRepository repo;
 	
 	@Autowired
 	private EntityManager entityManager;

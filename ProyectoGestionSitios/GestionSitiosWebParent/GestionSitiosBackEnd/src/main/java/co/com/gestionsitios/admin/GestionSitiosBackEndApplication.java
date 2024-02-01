@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan ({"co.com.gestionsitios.admin.usuario"})
+@ComponentScan(basePackages = {"co.com.gestionsitios.*"})
 @EntityScan({"co.com.gestionsitios.common.entity"})
 @EnableJpaRepositories("co.com.gestionsitios.usuario")
 
