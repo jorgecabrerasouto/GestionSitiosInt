@@ -37,7 +37,7 @@ public class Usuario {
 	@Column(length = 64)
 	private String fotos;
 	
-	private boolean enabled;
+	private boolean activo;
 	
 	@ManyToMany ()
 	@JoinTable (
@@ -105,12 +105,12 @@ public class Usuario {
 		this.fotos = fotos;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isActivo() {
+		return activo;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Role> getRoles() {
@@ -127,7 +127,7 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido, email, enabled, fotos, id, password, nombre, roles);
+		return Objects.hash(apellido, email, activo, fotos, id, password, nombre, roles);
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class Usuario {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(apellido, other.apellido) && Objects.equals(email, other.email)
-				&& enabled == other.enabled && Objects.equals(fotos, other.fotos) && Objects.equals(id, other.id)
+				&& activo == other.activo && Objects.equals(fotos, other.fotos) && Objects.equals(id, other.id)
 				&& Objects.equals(password, other.password) && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(roles, other.roles);
 	}

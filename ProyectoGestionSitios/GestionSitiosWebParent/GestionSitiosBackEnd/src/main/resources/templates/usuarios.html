@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
 
 <title>Gestión Sitios - Administración</title>
 
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo_prueba.css}" >
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
 
 <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script type="text/javascript"
 	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
+
 <body>
 	<div class="container-fluid">
 		<div>
@@ -52,12 +54,16 @@
 			</nav>
 		</div>
 		<div>
-			<h2>Gestión de Usuarios</h2>
+			<h2>Gestión de usuarios</h2>
+			<a th:href="@{/usuarios/nuevo}">Crear un nuevo usuario</a>			
+		</div>
+		<div th:if="${message} != null" class="alert alert-success text-center">
+			[[${message}]]
 		</div>
 		<div>
-			<table class="table table-bordered table-striped table-hover table-responsive-xl">
-				<thead class="thead-dark">
-					<tr>
+			<table class="table table-bordered table-striped table-hover small-font table-responsive-xl">
+				<thead class="thead-dark" style="overflow: hidden; line-height: 2px; white-space: nowrap;">
+					<tr class="Encabezado-Tabla" >
 						<td>Id Usuario</td>
 						<td>Fotos</td>
 						<td>Email</td>
@@ -68,14 +74,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="usuario : ${listaUsuarios}">
+					<tr class="Altura-Fila clickable-row" th:each="usuario : ${listaUsuarios}">
 						<td>[[${usuario.id}]]</td>
 						<td></td>
 						<td>[[${usuario.email}]]</td>
 						<td>[[${usuario.nombre}]]</td>
 						<td>[[${usuario.apellido}]]</td>
 						<td>[[${usuario.roles}]]</td>
-						<td>[[${usuario.enabled}]]</td>
+						<td>[[${usuario.activo}]]</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

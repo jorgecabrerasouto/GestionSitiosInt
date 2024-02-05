@@ -64,7 +64,7 @@ public class UsuarioRepositoryTest {
 	@Test
 	public void testUpdateDetallesUsuario() {
 		Usuario usuarioJCS = repo.findById(1).get();
-		usuarioJCS.setEnabled(true);
+		usuarioJCS.setActivo(true);
 		usuarioJCS.setEmail("jorgecabrerasouto@gmail.com");
 		
 		repo.save(usuarioJCS);
