@@ -40,5 +40,10 @@ public class ServicioUsuarios {
 		String encodedPassword = passwordEncoder.encode(usuario.getPassword());
 		usuario.setPassword(encodedPassword);
 	}
+	public Boolean esEmailUnico(String email) {
+		Usuario userByEmail = repoUsuario.getUsuarioByEmail(email);
+		
+		return userByEmail == null;
+	}
 	
 }
