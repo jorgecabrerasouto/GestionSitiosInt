@@ -7,8 +7,9 @@
 <title>Gestión Sitios - Administración</title>
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/estilo_prueba.css}" >
-<link rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 
 
 <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -62,26 +63,36 @@
 		</div>
 		<div>
 			<table class="table table-bordered table-striped table-hover small-font table-responsive-xl">
-				<thead class="thead-dark" style="overflow: hidden; line-height: 2px; white-space: nowrap;">
-					<tr class="Encabezado-Tabla" >
-						<td>Id Usuario</td>
-						<td>Fotos</td>
-						<td>Email</td>
-						<td>Nombres</td>
-						<td>Apellidos</td>
-						<td>Roles</td>
-						<td>¿Activo?</td>
+				<thead style="overflow: hidden; line-height: 2px; white-space: nowrap; color: #00552b; background-color: #deedcb;">
+					<tr>
+						<th>Id Usuario</th>
+						<th>Fotos</th>
+						<th>Email</th>
+						<th>Nombres</th>
+						<th>Apellidos</th>
+						<th>Roles</th>				
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="Altura-Fila clickable-row" th:each="usuario : ${listaUsuarios}">
+					<tr style="overflow: hidden; line-height: 2px; white-space: nowrap;" th:each="usuario : ${listaUsuarios}">
 						<td>[[${usuario.id}]]</td>
-						<td></td>
+						<td><span class="fas fa-portrait icon-silver"></span></td>
 						<td>[[${usuario.email}]]</td>
 						<td>[[${usuario.nombre}]]</td>
 						<td>[[${usuario.apellido}]]</td>
 						<td>[[${usuario.roles}]]</td>
-						<td>[[${usuario.activo}]]</td>
+						<td>						
+							<a th:if="${usuario.activo == true}" class="fas fa-check-circle icon-green" href=""></a>
+							<a th:if="${usuario.activo == false}" class="fas fa-check-circle icon-dark" href=""></a>
+						</td>
+						<td>
+							<a class="fas fa-edit icon-green" th:href="@{'/usuarios/editar/' + ${usuario.id}}"
+							title="Edite este usuario"></a>
+							&nbsp;
+							<a class="fas fa-trash icon-dark" href=""></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

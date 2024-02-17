@@ -12,8 +12,8 @@ public class RestControllerUsuario {
 	private ServicioUsuarios servicio;
 	
 	@PostMapping("/usuarios/chequear_email")
-	public String chequearEmailDuplicado (@Param ("email") String email) {
-		return servicio.esEmailUnico(email) ? "OK" : "Duplicado";
+	public String chequearEmailDuplicado (@Param("id") Integer id, @Param ("email") String email) {
+		return servicio.esEmailUnico(id, email) ? "OK" : "Duplicado";
 		
 	}
 }

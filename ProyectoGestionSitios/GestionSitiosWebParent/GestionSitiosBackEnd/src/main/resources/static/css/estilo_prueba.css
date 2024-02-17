@@ -1,16 +1,16 @@
-tr.Altura-Fila
+tr.altura-fila
 {
 	cursor: pointer;
 	overflow: hidden; 
 	line-height: 2px; 
 	white-space: nowrap;	
 }
-tr.Encabezado-Tabla
+th.Encabezado-Tabla
 {
-	color: #00552b;
-	background-color: #deedcb;
 	text-align: center;
 	overflow: hidden; 
 	line-height: 2px; 
-	white-space: nowrap
+	white-space: nowrap;
+	color: #00552b;
+	background-color: #deedcb;
 }
