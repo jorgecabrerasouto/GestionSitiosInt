@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
 import co.com.gestionsitios.common.entity.Role;
 import co.com.gestionsitios.common.entity.Usuario;
 
@@ -79,6 +78,15 @@ public class ServicioUsuarios {
 		} catch (NoSuchElementException ex) {
 			throw new UserNotFoundException("No se pudo encontrar un usuario con id " + id);
 		}
+	}
+	
+	public void eliminar(Integer id) throws UserNotFoundException {
+		Long countById = repoUsuario.countById(id);
+		if (countById == null || countById == 0) {
+			throw new UserNotFoundException("No se pudo encontrar un usuario con id " + id);
+		}
+		
+		repoUsuario.deleteById(id);
 	}
 	
 }

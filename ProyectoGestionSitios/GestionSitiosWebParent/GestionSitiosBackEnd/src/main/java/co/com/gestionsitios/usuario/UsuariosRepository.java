@@ -13,4 +13,6 @@ public interface UsuariosRepository extends CrudRepository<Usuario, Integer>{
 	@Query("SELECT u FROM Usuario u WHERE u.email=:email")
 	public Usuario getUsuarioByEmail(@Param("email") String email);
 	
+	public Long countById(Integer id);
+	
 }

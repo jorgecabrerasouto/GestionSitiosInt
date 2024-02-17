@@ -91,11 +91,34 @@
 							<a class="fas fa-edit icon-green" th:href="@{'/usuarios/editar/' + ${usuario.id}}"
 							title="Edite este usuario"></a>
 							&nbsp;
-							<a class="fas fa-trash icon-dark" href=""></a>
+							<a class="fas fa-trash icon-dark link-delete" 
+								th:href="@{'/usuarios/eliminar/' +${usuario.id}}"
+								th:idUsuario="${usuario.id}"
+							title="Elimine este usuario"></a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+		<div class="modal fade text-center" id="confirmModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Confirmación de eliminación</h4>
+						<button type="button" class="close" data-dismiss="modal">&times</button>
+					</div>
+										
+					<div class="modal-body">
+						<span id="confirmText"></span>
+					</div>
+					
+					<div class="modal-footer">
+						<a class="btn btn-success" href="" id="yesButton">Si</a>
+						<button type="button"  class="btn btn-danger" data-dismiss="modal">No</button>
+					</div>
+				</div>			
+			</div>
 		</div>
 	</div>
 
@@ -103,5 +126,18 @@
 		<p>Gestión Sitios - Panel de Control - Copyright &copy; JCS</p>
 	</div>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e){
+			e.preventDefault();
+			link = $(this);
+			//alert($(this).attr("href"));
+			idUsuario = link.attr("idUsuario");
+			$("#yesButton").attr("href", link.attr("href"));
+			$("#confirmText").text("¿Está seguro de que quiere eliminar el usuario con ID " + idUsuario +"?");
+			$("#confirmModal").modal();
+		});
+	});
+</script>
 </body>
 </html>

@@ -67,4 +67,17 @@ public class ControladorUsuario {
 		return "redirect:/usuarios";
 	}
 	
+	@GetMapping("/usuarios/eliminar/{id}")
+	public String eliminarUsuario(@PathVariable(name = "id") Integer id, 
+			Model model,
+			RedirectAttributes redirectAttributes) {
+		try {
+			service.eliminar(id);
+			redirectAttributes.addFlashAttribute("message", 
+					"El usuario con ID " + id + " ha sido eliminado exitosamente");
+		} catch (UserNotFoundException ex) {
+			redirectAttributes.addFlashAttribute("message", ex.getMessage());
+		}
+		return "redirect:/usuarios";
+	}
 }
