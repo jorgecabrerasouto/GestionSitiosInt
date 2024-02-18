@@ -84,8 +84,12 @@
 						<td>[[${usuario.apellido}]]</td>
 						<td>[[${usuario.roles}]]</td>
 						<td>						
-							<a th:if="${usuario.activo == true}" class="fas fa-check-circle icon-green" href=""></a>
-							<a th:if="${usuario.activo == false}" class="fas fa-check-circle icon-dark" href=""></a>
+							<a th:if="${usuario.activo == true}" class="fas fa-check-circle icon-green" 
+							th:href="@{'/usuarios/' + ${usuario.id} + '/activo/false'}"
+							title="Activar este usuario"></a>
+							<a th:if="${usuario.activo == false}" class="fas fa-circle icon-dark" 
+							th:href="@{'/usuarios/' + ${usuario.id} + '/activo/true'}"
+							title="Desactivar este usuario"></a>
 						</td>
 						<td>
 							<a class="fas fa-edit icon-green" th:href="@{'/usuarios/editar/' + ${usuario.id}}"

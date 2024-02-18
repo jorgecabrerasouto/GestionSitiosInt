@@ -1,5 +1,6 @@
 package co.com.gestionsitios.usuario;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +15,9 @@ public interface UsuariosRepository extends CrudRepository<Usuario, Integer>{
 	public Usuario getUsuarioByEmail(@Param("email") String email);
 	
 	public Long countById(Integer id);
+	
+	@Query ("UPDATE Usuario u SET u.activo = ?2 WHERE u.id = ?1")
+	@Modifying
+	public void actualizarEstadoActivo (Integer id, boolean activo);
 	
 }

@@ -98,12 +98,22 @@ public class UsuarioRepositoryTest {
 	} 
 	@Test
 	public void testCountById() {
-		Integer id = 1;
-		
+		Integer id = 3;
 		Long countById = repo.countById(id);
 		
 		assertThat(countById).isNotNull().isGreaterThan(0);
 		
-		
+	}
+	
+	@Test
+	public void testUsuarioInactivo() {
+		Integer id = 3;
+		repo.actualizarEstadoActivo(id, false);
+	}
+	
+	@Test
+	public void testUsuarioActivo() {
+		Integer id = 3;
+		repo.actualizarEstadoActivo(id, true);
 	}
 }

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import co.com.gestionsitios.common.entity.Role;
 import co.com.gestionsitios.common.entity.Usuario;
+import jakarta.transaction.Transactional;
 
 
 @Service
+@Transactional
 public class ServicioUsuarios {
 
 	@Autowired
@@ -87,6 +89,11 @@ public class ServicioUsuarios {
 		}
 		
 		repoUsuario.deleteById(id);
+	}
+	
+	public void actualizarEstadoActivoUsuario (Integer id, boolean active) {
+		repoUsuario.actualizarEstadoActivo(id, active);
+		
 	}
 	
 }

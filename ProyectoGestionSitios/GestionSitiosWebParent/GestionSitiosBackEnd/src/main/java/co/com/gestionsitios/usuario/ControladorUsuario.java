@@ -80,4 +80,16 @@ public class ControladorUsuario {
 		}
 		return "redirect:/usuarios";
 	}
+	
+	@GetMapping("/usuarios/{id}/activo/{estado}")
+	public String actualizarEstadoActivoUsuario(@PathVariable("id") Integer id,
+			@PathVariable("estado") boolean activo, RedirectAttributes redirectAttributes) {
+		service.actualizarEstadoActivoUsuario(id, activo);
+		String estado = activo ? "activado" : "desctivado";
+		String message = "El usuario con ID " + id + " ha sido " + estado;
+		redirectAttributes.addFlashAttribute("message", message);
+		
+		return "redirect:/usuarios";
+		
+	}
 }
